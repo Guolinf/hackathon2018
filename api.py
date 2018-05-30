@@ -72,6 +72,11 @@ def jsfile():  # pragma: no cover
     return Response(content, mimetype="application/javascript")
 
 
+@app.route('/trash.png', methods=['GET'])
+def trashfile():  # pragma: no cover
+    content = get_file('trash.png')
+    return Response(content, mimetype="image/png")
+
 
 upload_folder = "/opt/uploads/"
 
