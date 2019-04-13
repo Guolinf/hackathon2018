@@ -47,7 +47,7 @@ cursor = connection.cursor()
 
 def get_file(filename):  # pragma: no cover
     try:
-        src = os.path.join("/opt/static/", filename)
+        src = os.path.join("./static/", filename)
         # Figure out how flask returns static files
         # Tried:
         # - render_template
@@ -78,7 +78,7 @@ def trashfile():  # pragma: no cover
     return Response(content, mimetype="image/png")
 
 
-upload_folder = "/opt/uploads/"
+upload_folder = "./uploads/"
 
 ALLOWED_EXTENSIONS = ['gpx']
 
@@ -107,7 +107,7 @@ def upload_file():
         parsexml.insertpath(res, connection, cursor)
 
         return redirect("/")
-    
+
     return 'failed'
 
 
@@ -206,7 +206,7 @@ def makeLitterGeoJSON(points):
     res = []
     for i in points:
         data = {
-          'type': 'Feature', 
+          'type': 'Feature',
           'geometry': {
             'type': 'Point',
             'coordinates': [i[1], i[2]]
@@ -267,7 +267,7 @@ def makeBinsGeoJSON(thelist):
             opacity = 0.8
 
         data = {
-          'type': 'Feature', 
+          'type': 'Feature',
           'geometry': igeo,
           "properties": {
             'fill': color, #"#%02X%02X%02X" % (red, green, blue),
